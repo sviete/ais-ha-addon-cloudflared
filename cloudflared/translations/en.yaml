@@ -4,3 +4,12 @@ configuration:
     name: Log Level
     description: >-
       Defines the log level for add-on and the Cloudflare service.
+  ais_subdomain:
+    name: Subdomain
+    description: >-
+      Set this to your subdomain that you want to use to access Home Assistant.
+  ais_password:
+    name: Password
+    description: >-
+      Set this to your password that you want to use to reserve subdomain.
+

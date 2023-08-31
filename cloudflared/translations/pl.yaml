@@ -3,4 +3,12 @@ configuration:
   log_level:
     name: Poziom Logowania
     description: >-
-      Definiuje poziom logowania dla dodatku i usługi Cloudflare.
+      Definiuje poziom logowania dla dodatku i usługi Cloudflare. 
+  ais_subdomain:
+    name: Subdomena
+    description: >-
+      Ustaw subdomenę, której chcesz używać, aby uzyskać dostęp do Home Assistant.
+  ais_password:
+    name: Hasło
+    description: >-
+      Ustaw to jako hasło, którego chcesz użyć do zarezerwowania subdomeny.

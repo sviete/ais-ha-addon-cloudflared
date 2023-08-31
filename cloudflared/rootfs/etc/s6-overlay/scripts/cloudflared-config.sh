@@ -13,6 +13,14 @@
 checkConfig() {
     bashio::log.trace "${FUNCNAME[0]}"
     bashio::log.info "Checking add-on config..."
+
+    local validHostnameRegex="^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$"
+
+     # Check for minimum configuration options
+    if bashio::config.is_empty 'ais_subdomain' && bashio::config.is_empty 'ais_password';
+    then
+        bashio::exit.nok "Cannot run without subdomain and password. Please set these add-on options."
+    fi
 }
 
 # ------------------------------------------------------------------------------
@@ -76,6 +84,30 @@ hasCertificate() {
 
     bashio::log.notice "No certificate found"
     return "${__BASHIO_EXIT_NOK}"
+}
+
+# ------------------------------------------------------------------------------
+# Check ais subdomain
+# ------------------------------------------------------------------------------
+checkSubdomain(){
+    bashio::log.trace "${FUNCNAME[0]}"
+    bashio::log.info "Checking the subdomain..."
+    bashio::log.notice
+    bashio::log.notice "Please wait for subdomain check in AIS"
+    bashio::log.notice
+
+    if bashio::debug ; then
+         args="-X POST -v --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain"
+         curl -f $args && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
+    else
+        args="-X POST -s --show-error --user  "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain"
+         curl -f $args && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
+    fi
+
+    tunnel_name="$(bashio::config 'ais_subdomain')"
+    external_hostname="$(bashio::config 'ais_subdomain').paczka.pro"
+
+    bashio::log.warning "Creating tunnel: https://${external_hostname}"
 }
 
 # ------------------------------------------------------------------------------
@@ -259,8 +291,8 @@ bashio::log.debug "Cloudflared log level set to \"${log}\""
 # RUN LOGIC
 # ------------------------------------------------------------------------------
 declare default_config=/tmp/config.json
-external_hostname="dom-12345.paczka.pro"
-tunnel_name="dom-12345"
+external_hostname=""
+tunnel_name=""
 tunnel_uuid=""
 data_path="/data"
 
@@ -268,6 +300,8 @@ main() {
     bashio::log.trace "${FUNCNAME[0]}"
 
     setCloudflaredLogLevel
+
+    checkConfig
 
     # remove ais cert
     if hasCertificate ; then
@@ -280,13 +314,8 @@ main() {
         checkConnectivity
     fi
 
-    checkConfig
+    checkSubdomain
 
-    # TODO
-    tunnel_name="dom-12345"
-    external_hostname="dom-12345.paczka.pro"
-
-    
     getCertificate
 
     deleteTunnel

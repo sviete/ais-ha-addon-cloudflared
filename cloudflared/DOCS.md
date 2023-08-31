@@ -1,9 +1,11 @@
 # AIS Cloudflared
 
 Cloudflared connects your Home Assistant Instance via a secure tunnel to a
-subdomain `dom-xxx.paczka.pro` at Cloudflare.
+subdomain ``dom-xxx.paczka.pro`` at Cloudflare. 
 This allows you to expose your Home Assistant
 instance to the Internet without opening ports on your router.
+
+
 
 ## Initial setup
 
@@ -14,6 +16,7 @@ add-on to expose your Home Assistant instance.
 
 1. Configure the `http` integration in your Home Assistant config as
    [described below](#configurationyaml)
+
 
 ### Option: `log_level`
 
@@ -62,6 +65,7 @@ Remember to restart Home Assistant when the configuration is changed.
 
 If you need assistance changing the config, please follow the
 [Advanced Configuration Tutorial][advancedconfiguration].
+
 
 ## License
 
