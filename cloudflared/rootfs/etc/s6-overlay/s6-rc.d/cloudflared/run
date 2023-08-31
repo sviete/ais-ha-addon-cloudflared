@@ -1,0 +1,34 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: Cloudflared
+# Runs the Cloudflare Tunnel for Home Assistant
+# ==============================================================================
+declare config_file="/tmp/config.json"
+declare certificate="/data/cert.pem"
+declare -a options
+
+
+# Set common cloudflared tunnel options
+options+=(--no-autoupdate)
+options+=(--metrics="0.0.0.0:36500")
+options+=(--loglevel="${CLOUDFLARED_LOG}")
+
+# Check for post_quantum option
+if bashio::config.true 'post_quantum' ; then
+    options+=(--post-quantum)
+fi
+
+# Check if we run local or remote managed tunnel and set related options
+if bashio::config.has_value 'tunnel_token' ; then
+    options+=(run --token="$(bashio::config 'tunnel_token')")
+else
+    bashio::log.debug "using ${config_file} config file"
+    options+=(--origincert=${certificate})
+    options+=(--config=${config_file})
+    options+=(run "$(bashio::config 'tunnel_name')")
+fi    
+
+bashio::log.info "Connecting Cloudflare Tunnel..."
+bashio::log.debug "cloudflared tunnel ${options[@]}"
+exec cloudflared \
+        tunnel "${options[@]}"
