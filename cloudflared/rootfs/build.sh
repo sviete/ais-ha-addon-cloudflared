@@ -1,6 +1,6 @@
 #!/bin/sh
 # ==============================================================================
-# Home Assistant Add-on: Cloudflared
+# Home Assistant Add-on: AIS Cloudflared
 #
 # Container build of Cloudflared
 # ==============================================================================

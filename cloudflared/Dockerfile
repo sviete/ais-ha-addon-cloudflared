@@ -37,7 +37,7 @@ LABEL \
     maintainer="AIS <https://github.com/sviete/>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Tobias Brenner <https://github.com/brenner-tobias/>" \
+    org.opencontainers.image.vendor="AIS <https://github.com/sviete/>" \
     org.opencontainers.image.authors="AIS <https://github.com/sviete/>" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://github.com/${BUILD_REPOSITORY}" \
