@@ -12,12 +12,15 @@
 [![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 
-Connect remotely to your Home Assistant, without opening ports using AIS Cloudflare Tunnel.
+Connect remotely to your Home Assistant, without opening ports using
+AIS Cloudflare Tunnel.
 
 ## About
 
-Cloudflared connects your Home Assistant Instance via a secure tunnel to a dom-xxx.paczka.pro subdomain at Cloudflare.
-This allows you to expose your Home Assistant instance to the Internet without opening ports on your router.
+Cloudflared connects your Home Assistant Instance via a secure tunnel to
+a dom-xxx.paczka.pro subdomain at Cloudflare.
+This allows you to expose your Home Assistant instance to the Internet
+without opening ports on your router.
 
 [:books: Read the full add-on documentation][docs]
 
