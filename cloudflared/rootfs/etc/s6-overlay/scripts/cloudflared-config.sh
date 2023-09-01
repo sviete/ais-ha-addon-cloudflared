@@ -23,7 +23,7 @@ checkConfig() {
     fi
 
     if ! [[ $(bashio::config 'ais_subdomain') =~ ${validHostnameRegex} ]] ; then
-                bashio::exit.nok "'${hostname}' selected subdomain is not a valid hostname. Please make sure not to include the protocol (e.g. 'https://') nor the port (e.g. ':8123') and only use lowercase characters in the 'subdomain'."
+                bashio::exit.nok " $(bashio::config 'ais_subdomain') selected subdomain is not a valid hostname. Please make sure not to include the protocol (e.g. 'https://') nor the port (e.g. ':8123') and only use lowercase characters in the 'subdomain'."
     fi
 }
 
@@ -103,10 +103,10 @@ checkSubdomain(){
 
     if bashio::debug ; then
          args="-X POST -v --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain"
-         curl -f $args && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
+         curl -f "$args" && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
     else
         args="-X POST -s --show-error --user  "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain"
-         curl -f $args && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
+         curl -f "$args" && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
     fi
 
     tunnel_name="$(bashio::config 'ais_subdomain')"
@@ -186,8 +186,8 @@ deleteTunnel() {
     || bashio::log.debug "No tunnel to delete!"
 
     # delete previous/old tunnel
-    old_tunnel_name=`cat "${data_path}/tunnel_name.txt"`
-    bashio::log.debug "Old tunnel to delete " ${old_tunnel_name}
+    old_tunnel_name=$(cat "${data_path}/tunnel_name.txt")
+    bashio::log.debug "Old tunnel to delete " "${old_tunnel_name}"
     cloudflared --origincert="${data_path}/cert.pem" tunnel --loglevel "${CLOUDFLARED_LOG}" delete -f "${old_tunnel_name}" \
     || bashio::log.debug "No old tunnel to delete!"
 
