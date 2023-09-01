@@ -5,7 +5,7 @@ View English description | [Go to English description below](#english-descriptio
 Cloudflared łączy Twoją instancję Home Assistant poprzez bezpieczny tunel z wybraną przez Ciebie subdomeną na hoście `paczka.pro`.
 Dzięki temu możesz bezpiecznie udostępnić instancję swojego Home Assistant-a w Internecie bez otwierania portów na routerze na adresie `<twoja-subdomena>.paczka.pro`
 
-![ais tunnel](ais-tunnel.png "Title")
+![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png "ais-tunnel")
 
 ## Początkowe ustawienia
 
