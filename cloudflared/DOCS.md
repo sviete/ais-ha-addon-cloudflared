@@ -17,7 +17,7 @@ dostępna pod adresem `<twoja-wybrana-subdomena>.paczka.pro`.
 W poniższych krokach pokażemy jak utworzyć tunel AIS Cloudflare i udostępnić
 swoją instancję Home Assistant w Internecie.
 
-#### 1. Skonfiguruj integrację `http` w Home Assistant ``configuration.yaml``
+#### 1. Skonfiguruj integrację `http` w Home Assistant `configuration.yaml`
 
 Ponieważ Home Assistant blokuje żądania od serwerów proxy/reverse proxy,
 trzeba ustowić w swojej instancji, aby zezwoliła na żądania z dodatku
@@ -42,17 +42,17 @@ W sklepie z dodatkami Home Assistant dostępna jest możliwość dodania
 repozytorium.Aby dodać to repozytorium, kliknij trzy kropki po prawej stronie
 na górze strony, wybierz opcje ``Repozytoria`` i użyj następującego adresu URL:
 
-``` shel
+```shel
 https://github.com/sviete/ais-ha-addons
 ```
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-repo-add.png)
 
-#### 3. Zainstaluj dodatek ``AIS Cloudflared``
+#### 3. Zainstaluj dodatek `AIS Cloudflared`
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-install.png)
 
-#### 4. Skonfiguruj dodatek ``AIS Cloudflared``
+#### 4. Skonfiguruj dodatek `AIS Cloudflared`
 
 W konfiguracji podaj nazwę subdomeny pod którą chcesz żeby była dostępna Twoja
 instancja Home Assistant. Dodatkowo podaj też hasło którym zarezerwujesz sobie
@@ -63,7 +63,7 @@ z taką subdomeną.
 
 Zapisz swoją konfigurację.
 
-#### 5. Uruchom dodatek ``AIS Cloudflared`` i obserwuj logi
+#### 5. Uruchom dodatek `AIS Cloudflared` i obserwuj logi
 
 Z logów dowiesz się czy subdomena którą wybrałeś była dostępna i czy tunel
 został prawidłowo uruchomiony.
