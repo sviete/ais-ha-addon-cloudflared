@@ -12,7 +12,7 @@
 [![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 
-Connect remotely to your Home Assistant and other services, without opening ports using AIS Cloudflare Tunnel.
+Connect remotely to your Home Assistant, without opening ports using AIS Cloudflare Tunnel.
 
 ## About
 
