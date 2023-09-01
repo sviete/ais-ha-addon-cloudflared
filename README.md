@@ -77,8 +77,8 @@ SOFTWARE.
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [cloudflare-sssa]: https://www.cloudflare.com/terms/
 [docs]: cloudflared/DOCS.md
-[github-actions-shield]: https://github.com/sviete/ha-addon-cloudflared/workflows/CI/badge.svg
-[github-actions]: https://github.com/sviete/ha-addon-cloudflared//actions
+[github-actions-shield]: https://github.com/sviete/ais-ha-addon-cloudflared/workflows/CI/badge.svg
+[github-actions]: https://github.com/sviete/ais-ha-addon-cloudflared//actions
 [ha-addons]: https://github.com/sviete/ha-addons
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 [issue]: https://github.com/sviete/ha-addon-cloudflared/issues

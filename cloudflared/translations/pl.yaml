@@ -3,7 +3,7 @@ configuration:
   log_level:
     name: Poziom Logowania
     description: >-
-      Definiuje poziom logowania dla dodatku i usługi Cloudflare. 
+      Definiuje poziom logowania dla dodatku i usługi Cloudflare.
   ais_subdomain:
     name: Subdomena
     description: >-
