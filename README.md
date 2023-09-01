@@ -1,6 +1,5 @@
 # Home Assistant Add-on: AIS Cloudflared
 
-[![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
 [![License][license-shield]](LICENSE.md)
 
@@ -13,14 +12,12 @@
 [![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 
-Connect remotely to your Home Assistant and other services, without opening ports
-using Cloudflare Tunnel.
+Connect remotely to your Home Assistant and other services, without opening ports using AIS Cloudflare Tunnel.
 
 ## About
 
 Cloudflared connects your Home Assistant Instance via a secure tunnel to a dom-xxx.paczka.pro subdomain at Cloudflare.
-This allows you to expose your Home Assistant instance and other services to the Internet without opening ports on your router.
-Additionally, you can utilize Cloudflare Zero Trust to further secure your connection.
+This allows you to expose your Home Assistant instance to the Internet without opening ports on your router.
 
 [:books: Read the full add-on documentation][docs]
 
@@ -79,14 +76,13 @@ SOFTWARE.
 [docs]: cloudflared/DOCS.md
 [github-actions-shield]: https://github.com/sviete/ais-ha-addon-cloudflared/workflows/CI/badge.svg
 [github-actions]: https://github.com/sviete/ais-ha-addon-cloudflared//actions
-[ha-addons]: https://github.com/sviete/ha-addons
+[ha-addons]: https://github.com/sviete/ais-ha-addons
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
-[issue]: https://github.com/sviete/ha-addon-cloudflared/issues
-[license-shield]: https://img.shields.io/github/license/sviete/ha-addon-cloudflared
+[issue]: https://github.com/sviete/ais-ha-addon-cloudflared/issues
+[license-shield]: https://img.shields.io/github/license/sviete/ais-ha-addon-cloudflared
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
-[releases-shield]: https://img.shields.io/github/v/release/brenner-tobias/addon-cloudflared?include_prereleases
-[releases]: https://github.com/sviete/ha-addon-cloudflared/releases
+[releases]: https://github.com/sviete/ais-ha-addon-cloudflared/releases
 [ais]: https://ai-speaker.com
 [my-ha-badge]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
-[my-ha-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fsviete%2Fha-addons
+[my-ha-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fsviete%2Fais-ha-addons
