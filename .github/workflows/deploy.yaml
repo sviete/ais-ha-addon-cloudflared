@@ -147,13 +147,13 @@ jobs:
       #   with:
       #     asset: docker://ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}
       #     cas_api_key: ${{ secrets.CAS_API_KEY }}
-      # - name: 🚀 Push
-      #   run: |
-      #     docker push \
-      #       "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}"
-      #     docker push \
-      #       "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
-      # # yamllint enable rule:line-length
+      - name: 🚀 Push
+        run: |
+          docker push \
+            "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}"
+          docker push \
+            "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:${{ needs.information.outputs.version }}"
+      # yamllint enable rule:line-length
 
   publish-stable:
     name: 📢 Publish to stable repository
