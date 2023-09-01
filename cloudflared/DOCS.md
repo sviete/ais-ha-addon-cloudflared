@@ -8,9 +8,7 @@ bezpiecznie udostępnić instancję swojego Home Assistant-a w Internecie
 bez otwierania portów na routerze. Twoja instancja Home Assistent będzie
 dostępna pod adresem `<twoja-wybrana-subdomena>.paczka.pro`.
 
-![ais tunnel](
-  https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png
-  )
+![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png)
 
 ## Początkowe ustawienia
 
