@@ -2,11 +2,10 @@
 
 View English description | [Go to English description below](#english-description)
 
-Cloudflared łączy Twoją instancję Home Assistant poprzez bezpieczny tunel z wybraną przez Ciebie subdomeną na hoście ``paczka.pro``.
-Dzięki temu możesz bezpiecznie udostępnić instancję swojego Home Assistant-a w Internecie bez otwierania portów na routerze na adresie ``<twoja-subdomena>.paczka.pro``
+Cloudflared łączy Twoją instancję Home Assistant poprzez bezpieczny tunel z wybraną przez Ciebie subdomeną na hoście `paczka.pro`.
+Dzięki temu możesz bezpiecznie udostępnić instancję swojego Home Assistant-a w Internecie bez otwierania portów na routerze na adresie `<twoja-subdomena>.paczka.pro`
 
 ![ais tunnel](ais-tunnel.png "Title")
-
 
 ## Początkowe ustawienia
 
@@ -15,6 +14,7 @@ Dzięki temu możesz bezpiecznie udostępnić instancję swojego Home Assistant-
 W poniższych krokach pokażemy jak utworzyć tunel AIS Cloudflare i udostępnić swoją instancję Home Assistant w Internecie.
 
 1. Skonfiguruj integrację `http` w Home Assistant
+
    ##### configuration.yaml
 
    Ponieważ Home Assistant blokuje żądania od serwerów proxy/reverse proxy, trzeba ustowić w swojej instancji, aby zezwoliła na żądania z dodatku Cloudflared. Dodatek działa lokalnie, więc HA musi ufać sieci doker. W tym celu należy dodać następujące linie do pliku `/usr/share/hassio/homeassistant/configuration.yaml`:
@@ -32,14 +32,12 @@ W poniższych krokach pokażemy jak utworzyć tunel AIS Cloudflare i udostępni�
 
 2. Skonfiguruj dodatek AIS Cloudflared w Home Assistant
 
-
    ##### TODO
-
 
 # English description
 
 Cloudflared connects your Home Assistant Instance via a secure tunnel to a
-subdomain ``<your-subdomain>.paczka.pro`` at Cloudflare.
+subdomain `<your-subdomain>.paczka.pro` at Cloudflare.
 This allows you to expose your Home Assistant
 instance to the Internet without opening ports on your router.
 
@@ -98,7 +96,7 @@ http:
 
 Remember to restart Home Assistant when the configuration is changed.
 
----------------------------------------------------
+---
 
 ## License
 
