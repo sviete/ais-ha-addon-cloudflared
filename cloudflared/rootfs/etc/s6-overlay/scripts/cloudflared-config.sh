@@ -97,16 +97,22 @@ hasCertificate() {
 checkSubdomain(){
     bashio::log.trace "${FUNCNAME[0]}"
     bashio::log.info "Checking the subdomain..."
-    bashio::log.notice
     bashio::log.notice "Please wait for subdomain check in AIS"
-    bashio::log.notice
-
+        
     if bashio::debug ; then
-         args="-X POST -v --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain"
-         curl -f "$args" && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
+        if curl -L -v --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
+        then
+            bashio::log.info "Subdomain OK"
+        else
+            bashio::exit.nok "Failed to use subdomain: $(bashio::config 'ais_subdomain'), maybe somebody reserved it. Check the name and password."
+        fi
     else
-        args="-X POST -s --show-error --user  "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain"
-         curl -f "$args" && bashio::log.info "Subdomain OK" || bashio::exit.nok "Failed to use this subdomain, maybe somebody reserved it. Check the name and password."
+       if curl -L -s --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
+        then
+            bashio::log.info "Subdomain OK"
+        else
+            bashio::exit.nok "Failed to use subdomain: $(bashio::config 'ais_subdomain'), maybe somebody reserved it. Check the name and password."
+        fi
     fi
 
     tunnel_name="$(bashio::config 'ais_subdomain')"
@@ -121,9 +127,7 @@ checkSubdomain(){
 getCertificate() {
     bashio::log.trace "${FUNCNAME[0]}"
     bashio::log.info "Creating new certificate..."
-    bashio::log.notice
     bashio::log.notice "Please wait for the AIS certificate"
-    bashio::log.notice
 
     if bashio::debug ; then
         curl -L -o "${data_path}/cert.pem" -v https://ai-speaker.com/ota/ais_cloudflared
@@ -186,11 +190,12 @@ deleteTunnel() {
     || bashio::log.debug "No tunnel to delete!"
 
     # delete previous/old tunnel
-    old_tunnel_name=$(cat "${data_path}/tunnel_name.txt")
-    bashio::log.debug "Old tunnel to delete " "${old_tunnel_name}"
-    cloudflared --origincert="${data_path}/cert.pem" tunnel --loglevel "${CLOUDFLARED_LOG}" delete -f "${old_tunnel_name}" \
-    || bashio::log.debug "No old tunnel to delete!"
-
+    if bashio::fs.file_exists "${data_path}/tunnel_name.txt" ; then
+        old_tunnel_name=$(cat "${data_path}/tunnel_name.txt")
+        bashio::log.debug "Old tunnel to delete " "${old_tunnel_name}"
+        cloudflared --origincert="${data_path}/cert.pem" tunnel --loglevel "${CLOUDFLARED_LOG}" delete -f "${old_tunnel_name}" \
+        || bashio::log.debug "No old tunnel to delete!"
+    fi
 
     if bashio::fs.file_exists "${data_path}/tunnel.json" ; then
        rm "${data_path}/tunnel.json"
@@ -339,7 +344,7 @@ main() {
     createDNS
 
     # store tunnel name to remove it as onld tunnel in case of name change
-    echo "$(bashio::config 'ais_subdomain')" > "${data_path}/tunnel_name.txt"
+    echo "${tunnel_name}" > "${data_path}/tunnel_name.txt"
 
 
     bashio::log.info "Finished setting up the Cloudflare Tunnel"
