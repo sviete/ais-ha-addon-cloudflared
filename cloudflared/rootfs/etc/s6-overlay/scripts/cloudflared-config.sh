@@ -21,6 +21,10 @@ checkConfig() {
     then
         bashio::exit.nok "Cannot run without subdomain and password. Please set these add-on options."
     fi
+
+    if ! [[ $(bashio::config 'ais_subdomain') =~ ${validHostnameRegex} ]] ; then
+                bashio::exit.nok "'${hostname}' selected subdomain is not a valid hostname. Please make sure not to include the protocol (e.g. 'https://') nor the port (e.g. ':8123') and only use lowercase characters in the 'subdomain'."
+    fi
 }
 
 # ------------------------------------------------------------------------------
@@ -28,6 +32,7 @@ checkConfig() {
 # ------------------------------------------------------------------------------
 checkConnectivity() {
     local pass_test=true
+    bashio::log.debug "Checking connectivity to Cloudflare"
 
     # Check for region1 TCP
     bashio::log.debug "Checking region1.v2.argotunnel.com TCP port 7844"
@@ -123,7 +128,7 @@ getCertificate() {
     if bashio::debug ; then
         curl -L -o "${data_path}/cert.pem" -v https://ai-speaker.com/ota/ais_cloudflared
     else
-        curl -L -o "${data_path}/cert.pem" https://ai-speaker.com/ota/ais_cloudflared
+        curl -sS -L -o "${data_path}/cert.pem" https://ai-speaker.com/ota/ais_cloudflared
     fi
     bashio::log.info "AIS Authentication successfull!"
 
@@ -174,10 +179,18 @@ hasTunnel() {
 # ------------------------------------------------------------------------------
 deleteTunnel() {
     bashio::log.trace "${FUNCNAME[0]}"
-    bashio::log.info "Deliting old tunnel..."
+    bashio::log.info "Deleting old tunnel..."
 
+    # delete current tunnel
     cloudflared --origincert="${data_path}/cert.pem" tunnel --loglevel "${CLOUDFLARED_LOG}" delete -f "${tunnel_name}" \
     || bashio::log.debug "No tunnel to delete!"
+
+    # delete previous/old tunnel
+    old_tunnel_name=`cat "${data_path}/tunnel_name.txt"`
+    bashio::log.debug "Old tunnel to delete " ${old_tunnel_name}
+    cloudflared --origincert="${data_path}/cert.pem" tunnel --loglevel "${CLOUDFLARED_LOG}" delete -f "${old_tunnel_name}" \
+    || bashio::log.debug "No old tunnel to delete!"
+
 
     if bashio::fs.file_exists "${data_path}/tunnel.json" ; then
        rm "${data_path}/tunnel.json"
@@ -310,7 +323,6 @@ main() {
 
     # Run connectivity checks if debug mode activated
     if bashio::debug ; then
-        bashio::log.debug "Checking connectivity to Cloudflare"
         checkConnectivity
     fi
 
@@ -325,6 +337,10 @@ main() {
     createConfig
 
     createDNS
+
+    # store tunnel name to remove it as onld tunnel in case of name change
+    echo "$(bashio::config 'ais_subdomain')" > "${data_path}/tunnel_name.txt"
+
 
     bashio::log.info "Finished setting up the Cloudflare Tunnel"
 }
