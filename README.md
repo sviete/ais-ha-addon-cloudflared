@@ -1,5 +1,6 @@
 # Home Assistant Add-on: AIS Cloudflared
 
+[![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
 [![License][license-shield]](LICENSE.md)
 
@@ -18,7 +19,7 @@ AIS Cloudflare Tunnel.
 ## About
 
 Cloudflared connects your Home Assistant Instance via a secure tunnel to
-a dom-xxx.paczka.pro subdomain at Cloudflare.
+your own subdomain at paczka.pro host via Cloudflare.
 This allows you to expose your Home Assistant instance to the Internet
 without opening ports on your router.
 
@@ -86,6 +87,7 @@ SOFTWARE.
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
 [releases]: https://github.com/sviete/ais-ha-addon-cloudflared/releases
+[releases-shield]: https://img.shields.io/github/v/release/sviete/ais-ha-addon-cloudflared?include_prereleases
 [ais]: https://ai-speaker.com
 [my-ha-badge]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
 [my-ha-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fsviete%2Fais-ha-addons
