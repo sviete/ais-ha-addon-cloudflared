@@ -26,9 +26,9 @@ sieci doker. W tym celu należy dodać następujące linie do pliku `/usr/share/
 
 ```yaml
 http:
- use_x_forwarded_for: true
- trusted_proxies:
-   - 172.30.33.0/24
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
 ```
 
 **Notatka**: _Nie ma potrzeby dostosowywania niczego w tych liniach, ponieważ
@@ -40,7 +40,7 @@ Pamiętaj o ponownym uruchomieniu Home Assistant po zmianie konfiguracji.
 
 W sklepie z dodatkami Home Assistant dostępna jest możliwość dodania
 repozytorium.Aby dodać to repozytorium, kliknij trzy kropki po prawej stronie
-na górze strony, wybierz opcje ``Repozytoria`` i użyj następującego adresu URL:
+na górze strony, wybierz opcje `Repozytoria` i użyj następującego adresu URL:
 
 ```shel
 https://github.com/sviete/ais-ha-addons
