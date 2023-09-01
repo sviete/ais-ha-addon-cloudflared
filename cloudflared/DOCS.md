@@ -1,7 +1,45 @@
 # AIS Cloudflared
 
+View English description | [Go to English description below](#english-description)
+
+Cloudflared łączy Twoją instancję Home Assistant poprzez bezpieczny tunel z wybraną przez Ciebie subdomeną na hoście ``paczka.pro``.
+Dzięki temu możesz bezpiecznie udostępnić instancję swojego Home Assistant-a w Internecie bez otwierania portów na routerze na adresie ``<twoja-subdomena>.paczka.pro``
+
+![ais tunnel](ais-tunnel.png "Title")
+
+
+## Początkowe ustawienia
+
+### Konfiguracja dodatku AIS Cloudflared
+
+W poniższych krokach pokażemy jak utworzyć tunel AIS Cloudflare i udostępnić swoją instancję Home Assistant w Internecie.
+
+1. Skonfiguruj integrację `http` w Home Assistant
+   ##### configuration.yaml
+
+   Ponieważ Home Assistant blokuje żądania od serwerów proxy/reverse proxy, trzeba ustowić w swojej instancji, aby zezwoliła na żądania z dodatku Cloudflared. Dodatek działa lokalnie, więc HA musi ufać sieci doker. W tym celu należy dodać następujące linie do pliku `/usr/share/hassio/homeassistant/configuration.yaml`:
+
+   **Notatka**: _Nie ma potrzeby dostosowywania niczego w tych liniach, ponieważ sieci doker jest zawsze taka sama._
+
+   ```yaml
+   http:
+     use_x_forwarded_for: true
+     trusted_proxies:
+       - 172.30.33.0/24
+   ```
+
+   Pamiętaj o ponownym uruchomieniu Home Assistant po zmianie konfiguracji.
+
+2. Skonfiguruj dodatek AIS Cloudflared w Home Assistant
+
+
+   ##### TODO
+
+
+# English description
+
 Cloudflared connects your Home Assistant Instance via a secure tunnel to a
-subdomain ``dom-xxx.paczka.pro`` at Cloudflare. 
+subdomain ``<your-subdomain>.paczka.pro`` at Cloudflare. 
 This allows you to expose your Home Assistant
 instance to the Internet without opening ports on your router.
 
@@ -63,9 +101,7 @@ http:
 
 Remember to restart Home Assistant when the configuration is changed.
 
-If you need assistance changing the config, please follow the
-[Advanced Configuration Tutorial][advancedconfiguration].
-
+---------------------------------------------------
 
 ## License
 
@@ -91,13 +127,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[addon-installation]: https://github.com/brenner-tobias/addon-cloudflared#installation
-[addon-wiki]: https://github.com/brenner-tobias/addon-cloudflared/wiki
-[advancedconfiguration]: https://www.home-assistant.io/getting-started/configuration/
-[cloudflare-sssa]: https://www.cloudflare.com/en-gb/terms/
-[how-tos]: https://github.com/brenner-tobias/addon-cloudflared/wiki/How-tos
-[tobias]: https://github.com/brenner-tobias
-[troubleshooting]: https://github.com/brenner-tobias/addon-cloudflared/wiki/Troubleshooting
-[create-remote-managed-tunnel]: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/#1-create-a-tunnel
-[addon-remote-tunnel]: https://github.com/brenner-tobias/addon-cloudflared/wiki/How-tos#how-to-configure-remote-tunnels
-[addon-remote-or-local]: https://github.com/brenner-tobias/addon-cloudflared/wiki/How-tos#local-vs-remote-managed-tunnels
+[addon-installation]: https://github.com/sviete/ais-ha-addon-cloudflared#installation
+
+
