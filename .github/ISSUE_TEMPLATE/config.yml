@@ -2,8 +2,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: I have a question or need support
-    url: https://community.home-assistant.io/t/new-add-on-cloudflared/
-    about: We use GitHub for tracking bugs, check the community forum for help.
+    url: https://ai-speaker.discourse.group/
+    about: Check the community forum for help.
   - name: Feature Request
     url: https://github.com/sviete/ais-ha-addon-cloudflared/discussions/new
     about: Please use create a Discussions for making feature requests.
