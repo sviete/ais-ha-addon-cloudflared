@@ -20,7 +20,7 @@ AIS Cloudflare Tunnel.
 
 AIS Cloudflared connects your Home Assistant Instance via a secure tunnel to
 subdomain selected by you, at paczka.pro host via Cloudflare. Doing that,
-you can expose your Home Assistant to the Internet without opening ports 
+you can expose your Home Assistant to the Internet without opening ports
 in your router.
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png)
