@@ -1,7 +1,7 @@
 # AIS Cloudflared
 
 Cloudflared connects your Home Assistant Instance via a secure tunnel via Cloudflare
-to a subdomain at ``paczka.pro`` host. This allows you to expose your Home Assistant instance
+to a subdomain at `paczka.pro` host. This allows you to expose your Home Assistant instance
 to the Internet without opening ports on your router.
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png)
@@ -16,7 +16,7 @@ Note: There is no need to adapt anything in these lines since the IP range of th
 
 `/usr/share/hassio/homeassistant/configuration.yaml`
 
-``` yaml
+```yaml
 http:
   use_x_forwarded_for: true
   trusted_proxies:
@@ -42,7 +42,7 @@ has been started correctly.
 
 e.g.:
 
-``` yaml
+```yaml
 https://my-ha.paczka.pro/
 ```
 
