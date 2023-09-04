@@ -17,7 +17,7 @@ Since Home Assistant blocks requests from proxies/reverse proxies, you need to t
 
 Note: There is no need to adapt anything in these lines since the IP range of the docker network is always the same.
 
-``` yaml
+```yaml
 http:
   use_x_forwarded_for: true
   trusted_proxies:
@@ -34,14 +34,14 @@ Save your configuration.
 
 #### 3. Start the `AIS Cloudflared` add-on and watch the logs
 
-From the logs you will find out if the subdomain you selected was available and whether 
+From the logs you will find out if the subdomain you selected was available and whether
 the tunnel has been started correctly.
 
 #### 4. Access your Home Assistant via the remote URL without port
 
 e.g.:
 
-``` yaml
+```yaml
 https://my-ha.paczka.pro/
 ```
 
