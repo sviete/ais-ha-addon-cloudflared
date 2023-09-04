@@ -6,6 +6,29 @@
 # Configures the Cloudflare Tunnel and creates the needed DNS entry under the
 # given hostname(s)
 # ==============================================================================
+# ------------------------------------------------------------------------------
+# Print AIS logo
+# ------------------------------------------------------------------------------
+aisLogo() {
+    bashio::log.warning ""
+    bashio::log.warning "    ⣴⣿⣿⣆"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿    ⣴⣿⣿⣆"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿    ⣴⣿⣿⣆"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿    ⠻⣿⣿⠏"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿    ⠻⣿⣿⠏"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning "    ⠻⣿⣿⠏"
+    bashio::log.warning ""
+}
 
 # ------------------------------------------------------------------------------
 # Checks if the config is valid
@@ -316,6 +339,8 @@ data_path="/data"
 
 main() {
     bashio::log.trace "${FUNCNAME[0]}"
+
+    aisLogo
 
     setCloudflaredLogLevel
 
