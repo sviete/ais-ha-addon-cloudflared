@@ -1,28 +1,20 @@
 # AIS Cloudflared
 
-View English description below | [Go to English description below](#english-description)
-
-Cloudflared łączy Twoją instancję Home Assistant poprzez bezpieczny tunel
-z wybraną przez Ciebie subdomeną na hoście `paczka.pro`. Dzięki temu możesz
-bezpiecznie udostępnić instancję swojego Home Assistant-a w Internecie
-bez otwierania portów na routerze. Twoja instancja Home Assistent będzie
-dostępna pod adresem `<twoja-wybrana-subdomena>.paczka.pro`.
+Cloudflared connects your Home Assistant Instance via a secure tunnel via Cloudflare
+to a subdomain at `paczka.pro` host. This allows you to expose your Home Assistant instance
+to the Internet without opening ports on your router.
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png)
 
-## Początkowe ustawienia
+## Local tunnel add-on setup
 
-### Konfiguracja dodatku AIS Cloudflared
+### 1. Configure the http integration in your Home Assistant config as
 
-W poniższych krokach pokażemy jak utworzyć tunel AIS Cloudflare i udostępnić
-swoją instancję Home Assistant w Internecie.
+Since Home Assistant blocks requests from proxies/reverse proxies, you need to tell your instance to allow requests from the Cloudflared add-on. The add-on runs locally, so HA has to trust the docker network. In order to do so, add the following lines to your /config/configuration.yaml:
 
-#### 1. Skonfiguruj integrację `http` w Home Assistant `configuration.yaml`
+Note: There is no need to adapt anything in these lines since the IP range of the docker network is always the same.
 
-Ponieważ Home Assistant blokuje żądania od serwerów proxy/reverse proxy,
-trzeba ustowić w swojej instancji, aby zezwoliła na żądania z dodatku
-Cloudflared. Dodatek działa lokalnie, więc wystarczy, że HA będzie ufać
-sieci doker. W tym celu należy dodać następujące linie do pliku `/usr/share/hassio/homeassistant/configuration.yaml`:
+`/usr/share/hassio/homeassistant/configuration.yaml`
 
 ```yaml
 http:
@@ -31,48 +23,28 @@ http:
     - 172.30.33.0/24
 ```
 
-**Notatka**: _Nie ma potrzeby dostosowywania niczego w tych liniach, ponieważ
-sieci doker jest zawsze taka sama._
+#### 2. Set subdomain and password
 
-Pamiętaj o ponownym uruchomieniu Home Assistant po zmianie konfiguracji.
-
-#### 2. Dodaj repozytorium dodatków AIS w Home Assistant
-
-W sklepie z dodatkami Home Assistant dostępna jest możliwość dodania
-repozytorium.Aby dodać to repozytorium, kliknij trzy kropki po prawej stronie
-na górze strony, wybierz opcje `Repozytoria` i użyj następującego adresu URL:
-
-```shel
-https://github.com/sviete/ais-ha-addons
-```
-
-![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-repo-add.png)
-
-#### 3. Zainstaluj dodatek `AIS Cloudflared`
-
-![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-install.png)
-
-#### 4. Skonfiguruj dodatek `AIS Cloudflared`
-
-W konfiguracji podaj nazwę subdomeny pod którą chcesz żeby była dostępna Twoja
-instancja Home Assistant. Dodatkowo podaj też hasło którym zarezerwujesz sobie
-subdomene na własność - tylko osoba która zna to hasło może uruchomić tunel
-z taką subdomeną.
+In the configuration, enter the name of the subdomain under which you want yours Home Assistant instance
+to be available. In addition, enter the password that you will reserve for yourself
+own subdomain - only the person who knows this password can run the tunnel with this subdomain.
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-config.png)
 
-Zapisz swoją konfigurację.
+Save your configuration.
 
-#### 5. Uruchom dodatek `AIS Cloudflared` i obserwuj logi
+#### 3. Start the `AIS Cloudflared` add-on and watch the logs
 
-Z logów dowiesz się czy subdomena którą wybrałeś była dostępna i czy tunel
-został prawidłowo uruchomiony.
+From the logs you will find out if the subdomain you selected was available and whether the tunnel
+has been started correctly.
 
-![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-logs.png)
+#### 4. Access your Home Assistant via the remote URL without port
 
-## English description
+e.g.:
 
-### TODO
+```yaml
+https://my-ha.paczka.pro/
+```
 
 ---
 
