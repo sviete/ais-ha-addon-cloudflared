@@ -19,6 +19,7 @@ aisLogo() {
     bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿    ⣴⣿⣿⣆"
     bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
     bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
+    bashio::log.warning ""
     bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
     bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿"
     bashio::log.warning "   ⣿⣿⣿⣿⣿⣿   ⣿⣿⣿⣿⣿⣿    ⠻⣿⣿⠏"
