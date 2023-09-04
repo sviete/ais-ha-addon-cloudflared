@@ -13,10 +13,10 @@ Assistant instance to the Internet without opening ports on your router.
 Since Home Assistant blocks requests from proxies/reverse proxies, you need to tell
 your instance to allow requests from the Cloudflared add-on. The add-on runs
 locally, so HA has to trust the docker network. In order to do so, add the
-following lines to your ``/config/configuration.yaml``:
+following lines to your `/config/configuration.yaml`:
 
->Note: There is no need to adapt anything in these lines below,
-since the IP range of the docker network is always the same.
+> Note: There is no need to adapt anything in these lines below,
+> since the IP range of the docker network is always the same.
 
 ```yaml
 http:
