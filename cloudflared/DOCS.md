@@ -15,7 +15,8 @@ your instance to allow requests from the Cloudflared add-on. The add-on runs
 locally, so HA has to trust the docker network. In order to do so, add the
 following lines to your ``/config/configuration.yaml``:
 
-Note: There is no need to adapt anything in these lines since the IP range of the docker network is always the same.
+>Note: There is no need to adapt anything in these lines below,
+since the IP range of the docker network is always the same.
 
 ```yaml
 http:
@@ -26,9 +27,10 @@ http:
 
 #### 2. Set subdomain and password
 
-In the configuration, enter the name of the subdomain under which you want yours Home Assistant
-instance to be available. In addition, enter the password that you will reserve for yourself
-own subdomain - only the person who knows this password can run the tunnel with this subdomain.
+In the configuration, enter the name of the subdomain under which you want yours
+Home Assistant instance to be available. In addition, enter the password that
+you will reserve for yourself own subdomain - only the person who knows this
+password can run the tunnel with this subdomain.
 
 Save your configuration.
 
