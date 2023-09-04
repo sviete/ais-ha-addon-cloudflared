@@ -1,8 +1,8 @@
 # AIS Cloudflared
 
 Cloudflared connects your Home Assistant Instance via a secure tunnel via Cloudflare
-to a subdomain at ``paczka.pro`` host. This allows you to expose your Home Assistant instance
-to the Internet without opening ports on your router.
+to a subdomain at ``paczka.pro`` host. This allows you to expose your Home
+Assistant instance to the Internet without opening ports on your router.
 
 ![ais tunnel](https://raw.githubusercontent.com/sviete/ais-ha-addon-cloudflared/main/docs/images/ais-tunnel.png)
 
@@ -10,7 +10,10 @@ to the Internet without opening ports on your router.
 
 ### 1. Configure the http integration in your Home Assistant config
 
-Since Home Assistant blocks requests from proxies/reverse proxies, you need to tell your instance to allow requests from the Cloudflared add-on. The add-on runs locally, so HA has to trust the docker network. In order to do so, add the following lines to your /config/configuration.yaml:
+Since Home Assistant blocks requests from proxies/reverse proxies, you need to tell
+ your instance to allow requests from the Cloudflared add-on. The add-on runs
+ locally, so HA has to trust the docker network. In order to do so, add the
+ following lines to your /config/configuration.yaml:
 
 Note: There is no need to adapt anything in these lines since the IP range of the docker network is always the same.
 
@@ -23,16 +26,16 @@ http:
 
 #### 2. Set subdomain and password
 
-In the configuration, enter the name of the subdomain under which you want yours Home Assistant instance
-to be available. In addition, enter the password that you will reserve for yourself
+In the configuration, enter the name of the subdomain under which you want yours Home Assistant
+instance to be available. In addition, enter the password that you will reserve for yourself
 own subdomain - only the person who knows this password can run the tunnel with this subdomain.
 
 Save your configuration.
 
 #### 3. Start the `AIS Cloudflared` add-on and watch the logs
 
-From the logs you will find out if the subdomain you selected was available and whether the tunnel
-has been started correctly.
+From the logs you will find out if the subdomain you selected was available and whether 
+the tunnel has been started correctly.
 
 #### 4. Access your Home Assistant via the remote URL without port
 
