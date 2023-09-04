@@ -4,7 +4,7 @@
 # Home Assistant Add-on: Cloudflared
 #
 # Configures the Cloudflare Tunnel and creates the needed DNS entry under the
-# given hostname(s)
+# given subdomain name on paczka.pro
 # ==============================================================================
 # ------------------------------------------------------------------------------
 # Print AIS logo
@@ -121,7 +121,7 @@ checkSubdomain(){
     bashio::log.trace "${FUNCNAME[0]}"
     bashio::log.info "Checking the subdomain..."
     bashio::log.notice "Please wait for subdomain check in AIS"
-        
+
     if bashio::debug ; then
         if curl -L -v --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
         then
