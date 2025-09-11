@@ -359,7 +359,7 @@ main() {
         checkConnectivity
     fi
 
-    # checkSubdomain
+    checkSubdomain
 
     getCertificate
 
