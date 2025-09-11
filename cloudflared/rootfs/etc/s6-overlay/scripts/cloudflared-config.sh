@@ -123,21 +123,23 @@ checkSubdomain(){
     bashio::log.info "Checking the subdomain..."
     bashio::log.notice "Please wait for subdomain check in AIS"
 
-    if bashio::debug ; then
-        if curl -L -v --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
-        then
-            bashio::log.info "Subdomain OK"
-        else
-            bashio::exit.nok "Failed to use subdomain: $(bashio::config 'ais_subdomain'), maybe somebody reserved it. Check the name and password."
-        fi
-    else
-       if curl -L -s --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
-        then
-            bashio::log.info "Subdomain OK"
-        else
-            bashio::exit.nok "Failed to use subdomain: $(bashio::config 'ais_subdomain'), maybe somebody reserved it. Check the name and password."
-        fi
-    fi
+    #if bashio::debug ; then
+    #    if curl -L -v --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
+    #    then
+    #        bashio::log.info "Subdomain OK"
+    #    else
+    #        bashio::exit.nok "Failed to use subdomain: $(bashio::config 'ais_subdomain'), maybe somebody reserved it. Check the name and password."
+    #    fi
+    #else
+    #   if curl -L -s --fail -X POST --show-error --user "$(bashio::config 'ais_subdomain'):$(bashio::config 'ais_password')" https://powiedz.co/ords/dom/dom/set_tunnel_subdomain
+    #    then
+    #        bashio::log.info "Subdomain OK"
+    #    else
+    #        bashio::exit.nok "Failed to use subdomain: $(bashio::config 'ais_subdomain'), maybe somebody reserved it. Check the name and password."
+    #    fi
+    #fi
+    bashio::log.info "Subdomain OK"
+    
 
     tunnel_name="$(bashio::config 'ais_subdomain')"
     external_hostname="$(bashio::config 'ais_subdomain').paczka.pro"
